@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  web-app:
+    build:
+      context: .
+    tty: true
+    ports:
+      - '8091:8000'
+
+  db:
+    image: "postgres:${POSTGRES_VERSION}"
+    restart: always
+    env_file:
+      - ./.env
