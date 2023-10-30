@@ -7,9 +7,18 @@ services:
     tty: true
     ports:
       - '8091:8000'
+    volumes:
+      - ./:/var/www/mockingapp
 
   db:
     image: "postgres:${POSTGRES_VERSION}"
     restart: always
     env_file:
       - ./.env
+    ports:
+      - '5435:5432'
+    volumes:
+      - dbdata:/var/lib/postgresql/data/
+
+volumes:
+  dbdata:
